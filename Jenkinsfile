@@ -9,12 +9,16 @@ pipeline{
   stages{
     stage('build'){
         steps{
+          script{
               script.build()
+          }
         }
     }
     stage('test'){
           steps{
-            script.test()
+            script{
+              script.test()
+              }
           }
     }
     stage('deploy'){
@@ -24,7 +28,9 @@ pipeline{
             }
         }
           steps{
-            script.deploy()
+            script{
+              script.deploy()
+            }              
           }
     }
   }
