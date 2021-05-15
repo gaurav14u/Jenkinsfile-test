@@ -4,12 +4,12 @@ pipeline{
   stages{
     stage('build'){
         steps{
-          echo 'build stage'
+          echo 'build stage {BRANCH_NAME}'
         }
     }
         stage('test'){
           steps{
-            echo 'test stage'
+            echo 'test stage {BRANCH_NAME}'
           }
     }
     stage('deploy'){
