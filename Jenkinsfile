@@ -4,18 +4,18 @@ pipeline{
   stages{
     stage('build'){
         steps{
-          echo 'build stage BRANCH_NAME'
+            echo 'build stage'
         }
     }
         stage('test'){
           steps{
-            echo 'test stage BRANCH_NAME'
+            echo 'test stage'
           }
     }
     stage('deploy'){
         when{
           expression{
-            BRANCH_NAME == 'master'
+            BRANCH_NAME == 'main'
             }
         }
         steps{
