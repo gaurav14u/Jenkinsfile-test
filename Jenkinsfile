@@ -3,19 +3,24 @@ pipeline{
   
   stages{
     stage('build'){
-      steps{
-        echo 'build stage'
-      }
+        steps{
+          echo 'build stage'
+        }
     }
         stage('test'){
-      steps{
-        echo 'test stage'
-      }
+          steps{
+            echo 'test stage'
+          }
     }
     stage('deploy'){
-      steps{
-        echo 'deploy stage'
-      }
+        when{
+          expression{
+            BRANCH_NAME == 'master'
+            }
+        }
+        steps{
+          echo 'deploy stage'
+        }
     }
   }
 }
