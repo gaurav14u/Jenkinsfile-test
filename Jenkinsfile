@@ -1,28 +1,20 @@
+#!/usr/bin/env groovy
+
+@Library('shared-jenkins-lib@main')
 def groovy_script
 
 pipeline{
   agent any
   
   stages{
-    stage('init'){
-        steps{
-          script{
-              groovy_script = load "script.groovy"
-            }
-        }
-    }
     stage('build'){
         steps{
-          script{
-              groovy_script.build()
-          }
+              script.build()
         }
     }
     stage('test'){
           steps{
-            script{
-                groovy_script.test()
-            }
+            script.test()
           }
     }
     stage('deploy'){
@@ -32,9 +24,7 @@ pipeline{
             }
         }
           steps{
-            script{
-                groovy_script.deploy()
-            }
+            script.deploy()
           }
     }
   }
