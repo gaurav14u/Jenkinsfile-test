@@ -1,15 +1,28 @@
+def groovy_script
+
 pipeline{
   agent any
   
   stages{
-    stage('build'){
+    stage('init'){
         steps{
-            echo 'build stage'
+          script{
+              groovy_script = load "script.groovy"
+            }
         }
     }
-        stage('test'){
+    stage('build'){
+        steps{
+          script{
+              groovy_script.build()
+          }
+        }
+    }
+    stage('test'){
           steps{
-            echo 'test stage'
+            script{
+                groovy_script.test()
+            }
           }
     }
     stage('deploy'){
@@ -18,9 +31,11 @@ pipeline{
             BRANCH_NAME == 'main'
             }
         }
-        steps{
-          echo 'deploy stage'
-        }
+          steps{
+            script{
+                groovy_script.deploy()
+            }
+          }
     }
   }
 }
