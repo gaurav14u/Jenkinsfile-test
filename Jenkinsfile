@@ -29,9 +29,7 @@ pipeline{
         }
           steps{
             script{
-              print BRANCH_NAME 
-              print currentBuild.result
-              print currentBuild              
+              echo currentBuild.result
               script.deploy()
             }              
           }
